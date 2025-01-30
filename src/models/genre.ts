@@ -1,8 +1,9 @@
 import * as Sequelize from "sequelize";
 import {Database} from "../config";
+import { GenreModelInterface } from "../interfaces/genreInterface";
 const sequelize = Database.sequelize;
 
-const Genre = sequelize.define<any>("genres",
+const Genre = sequelize.define<GenreModelInterface>("genres",
     {
         id:{
             type:Sequelize.INTEGER,

@@ -8,19 +8,30 @@ module.exports = {
      *
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
-     */
-    await queryInterface.createTable('genres',{
+     
+    **/
+    
+    await queryInterface.createTable('create-directors', { 
       id:{
-        type:Sequelize.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull:false,
-        autoIncrement:true,
-        primaryKey:true,
-      },
-      name:{
-        type:Sequelize.STRING,
-        allowNull:false,
-      }
-    })
+        autoIncrement:true,  
+         primaryKey:true,
+     },
+     name:{
+         type:Sequelize.STRING,
+         allowNull:false,
+     },
+     country:{
+         type:Sequelize.STRING,
+         allowNull:false,
+     },
+     DOB:{
+         type:Sequelize.DATE,
+         allowNull:false,
+     }
+       });
+  
 
   },
 
@@ -31,6 +42,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable('genres');
+    await queryInterface.dropTable('create-directors');
   }
 };

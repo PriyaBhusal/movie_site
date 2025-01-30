@@ -1,15 +1,15 @@
 import {Request , Response} from "express";
-import { GenreService } from "../../services";
+import { DirectorService } from "../../services/directorsServices";
 
-export class GenreController{
+export class DirectorController{
     public constructor(){}
-    static async getGenre(req:Request,res:Response):Promise<Response>{
-         const genres = await new GenreService().getGenre();
+    static async getDirector(req:Request,res:Response):Promise<Response>{
+         const directors = await new DirectorService().getDirector();
                     return res.status(200).json({
                         success:true,
                         status:200,
                         message:'Genres fetched successfully.',
-                        data:genres,
+                        data:directors,
                     });
                 }
 
@@ -35,13 +35,13 @@ export class GenreController{
         const data = req.body; 
                
                 
-                const genre = await new GenreService().create(data);
+                const director = await new DirectorService().create(data);
                
                    return res.status(200).json({
                        success: true,
                        status: 201,
                        message: 'successfully created.',
-                       data: genre,
+                       data:director ,
                    });
                }
 
@@ -49,7 +49,7 @@ export class GenreController{
     static async Update(req:Request,res:Response):Promise<Response>{
         const id = req.params.id as unknown as number;
         const data = req.body;
-        const update =await new GenreService().update(id,data)
+        const update =await new DirectorService().update(id,data)
 
         if(update== false)
         {
@@ -64,7 +64,7 @@ export class GenreController{
 
     static async Delete(req:Request,res:Response):Promise<Response>{
         const id = req.params.id as unknown as number;
-        await new GenreService().delete(id)
+        await new DirectorService().delete(id)
         return res.status(200).json({
             success:true,
             status:200,

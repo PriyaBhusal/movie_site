@@ -1,11 +1,11 @@
-import { GenreInterface, InputGenreInterface } from "../interfaces";
+import { MovieInterface, InputMovieInterface } from "../interfaces/movieInterface";
 import Models from "../models";
 
 
 
-export class GenreService {
-    public async getGenre():Promise<GenreInterface[]>{
-        const data = await Models.Genre.findAll();
+export class MovieService {
+    public async getMovie():Promise<MovieInterface[]>{
+        const data = await Models.Movie.findAll();
         return data;
     }
 
@@ -14,13 +14,13 @@ export class GenreService {
     //     return data;
     // }
 
-    public async create(data:InputGenreInterface):Promise<GenreInterface> {
-        const genre = await Models.Genre.create(data);
+    public async create(data:InputMovieInterface):Promise<MovieInterface> {
+        const genre = await Models.Movie.create(data);
         return genre;
     }
 
-    public async update(id:number,data:InputGenreInterface):Promise<boolean>{
-        const result = await Models.Genre.update(data,{
+    public async update(id:number,data:InputMovieInterface):Promise<boolean>{
+        const result = await Models.Movie.update(data,{
             where:{
                 id:id,
             },
@@ -30,7 +30,7 @@ export class GenreService {
 
     public async delete(id:number)
     {
-        const deleted = await Models.Genre.destroy(
+        const deleted = await Models.Movie.destroy(
             {
                 where:{
                     id:id

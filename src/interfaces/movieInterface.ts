@@ -1,0 +1,24 @@
+import * as Sequelize from "sequelize";
+
+export interface InputMovieInterface {
+  title: string;
+  imdbScore: number; 
+  directorId: number;
+  actors: string; 
+  genreId: string;
+  description: string; 
+  thumbnail: string;
+  embedVideoUrl: string;
+  avgRatings: number; 
+  totalRatings: number; 
+  duration: string;
+  releasedAt: Date; 
+}
+
+export interface MovieInterface extends InputMovieInterface {
+  id: number; 
+}
+
+export interface MovieModelInterface
+  extends Sequelize.Model<MovieInterface, Partial<InputMovieInterface>>,
+    MovieInterface {}
