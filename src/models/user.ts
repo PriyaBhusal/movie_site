@@ -4,7 +4,7 @@ import {UserModelInterface} from "../interfaces/userInterface";
 import { RoleEnum } from '../enums';
 const sequelize = Database.sequelize;
 
-const User =  sequelize.define<UserModelInterface>("user",{
+const User =  sequelize.define<UserModelInterface>("users",{
         id:{
            type: Sequelize.INTEGER,
            allowNull:false,
@@ -22,7 +22,7 @@ const User =  sequelize.define<UserModelInterface>("user",{
            
         },
         password:{
-            type:Sequelize.DATE,
+            type:Sequelize.STRING,
             allowNull:false,
             
         },
@@ -33,6 +33,8 @@ const User =  sequelize.define<UserModelInterface>("user",{
         }
     },
     {
+
+        // tableName: 'user'
         timestamps:false,
     }
 );

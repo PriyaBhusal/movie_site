@@ -22,3 +22,11 @@ export interface MovieInterface extends InputMovieInterface {
 export interface MovieModelInterface
   extends Sequelize.Model<MovieInterface, Partial<InputMovieInterface>>,
     MovieInterface {}
+
+export interface ArgsMovieInterface{
+  offset?:number;
+  limit?:number;
+  order:string;
+  sort:'asc' | 'desc';
+  searchQuery?:string;
+}

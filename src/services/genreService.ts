@@ -38,5 +38,5 @@ export class GenreService {
             }
         )
         return deleted;
-    }
+        }
 }

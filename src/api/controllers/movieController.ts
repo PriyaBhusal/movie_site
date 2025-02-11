@@ -4,11 +4,26 @@ import {MovieService} from "../../services/moviesService";
 export class MovieController{
     public constructor(){}
     static async getMovie(req:Request,res:Response):Promise<Response>{
-         const directors = await new MovieService().getMovie();
+        console.log(req.query);
+        const page = req.query.page ? +req.query.page:1;
+        const limit = req.query.limit ?  +req.query.limit:2;
+        //calculate your offset based on the page nummber and limit 
+        //offset based pagination
+        const offset = (page-1)*limit;
+        const searchQuery = req.query.searchQuery as string
+
+         const directors = await new MovieService().getMovie({
+                offset:offset,
+                limit:limit,
+                order:'id',
+                sort:'asc',
+                searchQuery:searchQuery
+            }
+         );
                     return res.status(200).json({
                         success:true,
                         status:200,
-                        message:'Genres fetched successfully.',
+                        message:'Movies fetched successfully.',
                         data:directors,
                     });
                 }

@@ -8,3 +8,10 @@ export  const signupValidator = Joi.object({
     password:Joi.string().required(),
     role:Joi.string().valid(RoleEnum.admin,RoleEnum.user).optional(),
 })
+
+export  const loginValidator = Joi.object({
+    
+    email:Joi.string().email().required(),
+    password:Joi.string().required(),
+    
+})

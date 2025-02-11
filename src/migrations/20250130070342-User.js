@@ -11,7 +11,7 @@ module.exports = {
      
     **/
     
-    await queryInterface.createTable('user', { 
+    await queryInterface.createTable('users', { 
       id:{
         type: Sequelize.INTEGER,
         allowNull:false,
@@ -28,7 +28,7 @@ module.exports = {
          unique:true
      },
      password:{
-         type:Sequelize.DATE,
+         type:Sequelize.STRING,
          allowNull:false,
      },
      role:{
@@ -48,6 +48,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable('user');
+    await queryInterface.dropTable('users');
   }
 };

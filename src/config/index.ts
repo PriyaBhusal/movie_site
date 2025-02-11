@@ -4,7 +4,7 @@ dotenv.config();
 
 export const port = process.env.PORT;
 export const environment = process.env.ENVIRONMENT;
-
+export const jwtSecret=process.env.JWT_SECRET_KEY as string;
 export const db = {
     host:process.env.DB_HOST,
     user:process.env.DB_USER,

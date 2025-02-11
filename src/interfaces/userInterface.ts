@@ -4,7 +4,7 @@ export interface InputUserInterface{
     name:string;
     email:string;
     password:string;
-    role?:RoleEnum;
+    role:RoleEnum;
 }
 
 export interface UserInterface extends InputUserInterface{

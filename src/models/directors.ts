@@ -28,3 +28,4 @@ const Director =  sequelize.define<DirectorModelInterface>("create-directors",{
     }
 );
 export default Director;
+
