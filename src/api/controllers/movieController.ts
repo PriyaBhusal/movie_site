@@ -1,5 +1,6 @@
 import {Request , Response} from "express";
 import {MovieService} from "../../services/moviesService";
+import { CategoryType } from "../../interfaces";
 
 export class MovieController{
     public constructor(){}
@@ -7,6 +8,8 @@ export class MovieController{
         console.log(req.query);
         const page = req.query.page ? +req.query.page:1;
         const limit = req.query.limit ?  +req.query.limit:2;
+        const genreId = req.query.genreId?req.query.genreId as string:undefined;
+        const category = req.query.category as string|undefined
         //calculate your offset based on the page nummber and limit 
         //offset based pagination
         const offset = (page-1)*limit;
@@ -17,7 +20,9 @@ export class MovieController{
                 limit:limit,
                 order:'id',
                 sort:'asc',
-                searchQuery:searchQuery
+                searchQuery:searchQuery,
+                genreId:genreId,
+                category:category as CategoryType
             }
          );
                     return res.status(200).json({

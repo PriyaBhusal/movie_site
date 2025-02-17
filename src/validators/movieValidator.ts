@@ -7,7 +7,7 @@ const createMovie = Joi.object({
     actors:Joi.string().label('Actors').required(),
     genreId:Joi.number().label('genreId').required(),
     description:Joi.string().label('description').required(),
-    thumbnail:Joi.string().label('thumnail').required(),
+    thumbnail:Joi.string().label('thumnail').optional(),
     embedVideoUrl:Joi.string().label('embedVideoUrl').required(),
     avgRatings:Joi.number().label('avg').required(),
     totalRatings:Joi.number().label('avg').required(),

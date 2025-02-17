@@ -15,10 +15,58 @@ export class MovieService {
                 }
             }
         }
+
+        if(args.category){
+            switch(args.category){
+                case 'latest':
+                    const date = '2024-01-01'
+                    where={
+                        ...where,
+                        releasedAt:{
+                            [Op.gt]:date,
+                        }
+                    }
+                    break;
+                    case 'top-rated':
+                        const baseRating = '8.00'
+                        where={
+                            ...where,
+                            avgRatings:{
+                                [Op.gte]:baseRating,
+                            }
+                        }
+                        break;
+                    case 'popular':
+                        const baseImdbScore = '7.00'
+                        where = {
+                            ...where,
+                            imdbScore:{
+                                [Op.gte]:baseImdbScore
+                            }
+                        }
+                        break;
+            }
+        }
+
+        if(args.genreId){
+            where={
+                ...where,
+                genreId:parseInt(args.genreId)
+            }
+        }
+
+        if(args.searchQuery){
+            where={
+                title:{
+                    [Op.like]:`%${args.searchQuery}%`
+                }
+            }
+        }
         const data = await Models.Movie.findAll({
             offset:args.offset,
             limit:args.limit,
-            order:[[args.order,args.sort]]
+            order:[[args.order,args.sort]],
+            where,
         });
         return data;
     }

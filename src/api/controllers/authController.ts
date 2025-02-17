@@ -7,6 +7,7 @@ import jwt from "jsonwebtoken";
 import { access } from "fs";
 export class AuthController {
   public static async signup(req: Request, res: Response): Promise<Response> {
+    
     const userData = req.body;
     const user = await new userService().findOne(userData.email);
     if (user) {
@@ -27,8 +28,7 @@ export class AuthController {
     return res.status(201).json({
       message: "Signup successfull.You can proceed to login.",
       data: newUser,
-    });
-  }
+    })}
 
   public static async login(req: Request, res: Response): Promise<Response> {
     const userData = req.body;
